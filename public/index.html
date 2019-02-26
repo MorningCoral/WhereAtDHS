@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Where@DHS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  </head>
+  <body>
+    <div class="container">
+       <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
+       <div id="sign-in">
+         <div id="firebaseui-auth-container"></div>
+         <div id="loader">Loading...</div>
+       </div>
+       <div id="user-signed-in" class="hidden">
+         <div id="user-info">
+           <div id="name"></div>
+           <div id="email"></div>
+         </div>
+         <button id="sign-out">Sign Out</button>
+         <p>
+           Welcome!
+         </p>
+       </div>
+    </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
