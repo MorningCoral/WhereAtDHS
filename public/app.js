@@ -59,6 +59,20 @@ var handleSignedInUser = function(user) {
           })
       }
   });
+  // update myhighscore
+  var mainTxt = document.getElementById("mainTxt");
+  var submitBtn = document.getElementById("submitBtn");
+
+  // retrieve myhighscore
+  var myhighscore = document.getElementById("myhighscore");
+  userdocRef.get().then(function(doc) {
+        myhighscore.innerText = doc.data().highscore;
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+
+
+
 };
 
 // Displays the UI for a signed out user.
@@ -79,9 +93,6 @@ var initApp = function() {
 }
 
 window.addEventListener('load', initApp);
-
-var mainTxt = document.getElementById("mainTxt");
-var submitBtn = document.getElementById("submitBtn");
 
 
 
