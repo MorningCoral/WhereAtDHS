@@ -37,20 +37,29 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ui.start('#firebaseui-auth-container', uiConfig);
 
 var db = firebase.firestore();
-db.collection("users").add({
-    name: "Display Name",
-    email: "Email",
-})
+
 var handleSignedInUser = function(user) {
   document.getElementById('sign-in').style.display = 'none';
   document.getElementById('user-signed-in').style.display = 'block';
   document.getElementById('name').textContent = user.displayName;
   document.getElementById('email').textContent = user.email;
 
-  db.collection("users").doc(user.uid).set({
-      name: user.displayName,
-      email: user.email,
-  })
+  var userdocRef = db.collection("users").doc(user.uid);
+  userdocRef.get().then(function(thisDoc) {
+      if (thisDoc.exists) {
+          //user is already there, write only last login
+          console.log("User present in database")
+      }
+      else {
+          //new user
+          userdocRef.set({
+            name: user.displayName,
+            email: user.email,
+            highscore: 0,
+          })
+      }
+  });
+};
 
 // Displays the UI for a signed out user.
 var handleSignedOutUser = function() {
@@ -73,6 +82,8 @@ window.addEventListener('load', initApp);
 
 var mainTxt = document.getElementById("mainTxt");
 var submitBtn = document.getElementById("submitBtn");
+
+
 
 
 
