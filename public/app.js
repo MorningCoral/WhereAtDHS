@@ -69,7 +69,16 @@ function submitClick() {
   var firebaseRef = firebase.database().ref();
   var messageTxt = mainTxt.value;
   firebaseRef.child("Highscore").set(messageTxt);
+  mainTxt.innerText = "";
 }
+
+var firebaseHighscoreRef = firebase.database().ref().child("Highscore");
+var myhighscore = document.getElementById("myhighscore");
+firebaseHighscoreRef.once('value', function(data) {
+
+  myhighscore.innerText = data.val();
+});
+
 
 /*
  googleSignIn=()=>{
