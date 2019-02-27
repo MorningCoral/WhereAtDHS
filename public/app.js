@@ -62,6 +62,14 @@ var initApp = function() {
 
 window.addEventListener('load', initApp);
 
+var mainTxt = document.getElementById("mainTxt");
+var submitBtn = document.getElementById("submitBtn");
+
+function submitClick() {
+  var firebaseRef = firebase.database().ref();
+  var messageTxt = mainTxt.value;
+  firebaseRef.child("Highscore").set(messageTxt);
+}
 
 /*
  googleSignIn=()=>{

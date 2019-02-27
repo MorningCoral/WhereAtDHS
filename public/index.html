@@ -14,17 +14,19 @@
        <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
        <div id="sign-in">
          <div id="firebaseui-auth-container"></div>
-         <div id="loader">Loading...</div>
+         <div id="loader">Loading......</div>
        </div>
        <div id="user-signed-in" class="hidden">
          <div id="user-info">
            <div id="name"></div>
            <div id="email"></div>
          </div>
+         <div>
+           <textarea id="mainTxt" placeholder="Enter text here..."></textarea>
+           <button id="submitBtn" onclick="submitClick()">Submit</button>
+         </div>
+         <p>Your high score is <span id="myhighscore"></span></p>
          <button id="sign-out">Sign Out</button>
-         <p>
-           Welcome!
-         </p>
        </div>
     </div>
 
