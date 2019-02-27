@@ -55,25 +55,33 @@ var handleSignedInUser = function(user) {
           userdocRef.set({
             name: user.displayName,
             email: user.email,
-            highscore: 0,
+            highscore: "0",
           })
+
       }
   });
-  // update myhighscore
-  var mainTxt = document.getElementById("mainTxt");
-  var submitBtn = document.getElementById("submitBtn");
 
   // retrieve myhighscore
+
   var myhighscore = document.getElementById("myhighscore");
   userdocRef.get().then(function(doc) {
         myhighscore.innerText = doc.data().highscore;
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
+  })
 
-
-
+  // update highscore
+  var mainTxt = document.getElementById("mainTxt");
+  var submitBtn = document.getElementById("submitBtn");
+  submitBtn.addEventListener("click", updateHighscore);
+  // update highscore
+  function updateHighscore() {
+    db.collection("users").doc(user.uid).update({
+      highscore: mainTxt.value,
+    })
+    mainTxt.value = '';
+  }
 };
+
+
 
 // Displays the UI for a signed out user.
 var handleSignedOutUser = function() {
