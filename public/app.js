@@ -77,7 +77,12 @@ var handleSignedInUser = function(user) {
     db.collection("users").doc(user.uid).update({
       highscore: mainTxt.value,
     })
-    mainTxt.value = '';
+  }
+  var playBtn = document.getElementById("playBtn");
+  // redirect to play page
+  playBtn.addEventListener("click", redirectPlay);
+  function redirectPlay() {
+    window.location = 'play.html';
   }
 };
 
