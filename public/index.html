@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Where@DHS</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <title>Where@DHS</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    </head>
+    <body>
+        <div id="body">
+            <h1>Where @ DHS!</h1>
+            <h2>Are You Ready for the Quiz?</h2>
 
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  </head>
-  <body>
-    <div class="container">
-       <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
-       <div id="sign-in">
-         <div id="firebaseui-auth-container"></div>
-         <div id="loader">Loading......</div>
-       </div>
-       <div id="user-signed-in" class="hidden">
-         <div id="user-info">
-           <div id="name"></div>
-           <div id="email"></div>
-         </div>
-         <div>
-           <textarea id="mainTxt" placeholder="Enter text here..."></textarea>
-           <button id="submitBtn">Submit</button>
-         </div>
-         <p>Your high score is <span id="myhighscore"></span></p>
-         <button id="playBtn">Play Game</button>
-         <button id="sign-out">Sign Out</button>
-       </div>
-    </div>
-
-  <script src="app.js"></script>
-</body>
+            <!-- How to play button -->
+            <div class="box">
+                <a class="button" href="#popup1">How to Play</a>
+            </div>
+            <!-- Google Login button -->
+            <div id="sign-in">
+                <div id="firebaseui-auth-container"></div>
+            </div>
+            <!--  How to play modal -->
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        Rules:</br>
+                        There will be total of 10 questions.</br>
+                        Choose the correct answer before time runs out!</br>
+                        Each correct answer will give you one point!</br>
+                        While wrong answer or no answer you will not get any point!</br>
+                        </br>
+                        Now, let's see how many points you can get! :)
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
+    <script src="config.js"></script>
+    <script src="login.js"></script>
+    </body>
 </html>

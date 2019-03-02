@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+body {
+  background-image: url(background_qn.jpg);
+}
+i {
+  font-size: 20px;
+}
+#sound {
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  margin: 5px;
+  padding: 5px 13px;
+}
+h1 {
+  color: #F5F5F5;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 250;
+  font-size: 2.5em;
+  letter-spacing: -1px;
+  line-height: 1.0em;
+  margin:0px;
+  text-align: center;
+  padding: 20px 20px;
+}

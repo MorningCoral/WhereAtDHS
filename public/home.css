@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+#body {
+  background-color: #F5F5F5;
+  align-content: center;
+  position: relative;
+  padding: 150px 100px;
+}
+h1 {
+  color: #0F1626;
+  font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+  font-weight: normal;
+  font-size: 1.8em;
+  letter-spacing: .1em;
+  line-height: 1.1em;
+  margin:0px;
+  text-align: center;
+}
+h2 {
+  color: #0F1626;
+  font-size: 25px;
+  font-family: Times New Roman;
+  position: relative;
+  text-align: center;
+}
+p {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
+  color: #0F1626;
+  text-decoration: none;
+  font-weight: 250;
+  letter-spacing: -3px;
+  line-height: 1;
+  margin: 40px;
+}
+#body2 {
+  align-self: center;
+}
+a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+#playBtn {
+  text-align: center;
+  font: Georgia;
+  font-size: 1.2em;
+  background-color: #AB987A;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+  background-color: #984B43;
+  margin: 40px;
+}
+#playBtn:hover {
+  opacity: 0.7;
+}
+#logout {
+  text-align: center;
+  font: Georgia;
+  font-size: 1.2em;
+  background-color: #AB987A;
+  border-radius: 200px;
+  cursor: pointer;
+  background-color: #AB987A;
+  margin: 40px;
+}
+#logout:hover {
+  opacity: 0.7;
+}

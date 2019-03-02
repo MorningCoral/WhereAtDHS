@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Where@DHS</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <link rel="stylesheet" type="text/css" href="play.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  </head>
-  <body>
-    <div class="container">
-       <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
-       <p>Welcome <span id="name"></span></p>
-    </div>
+</head>
+<body>
+    <!-- Bgm
 
+    <audio loop id="audio">
+        <source src="bgm.mp3" type="audio/ogg">
+        <embed src="bgm.mp3" autostart="true" loop="true" hidden="true">
+    </audio>
+
+    ! Bgm and Fx toggle buttons
+    <button id="sound" onclick="document.getElementById('audio').play()">
+        <i class='fas fa-volume-up'></i></button>
+    <button id="sound" onclick="document.getElementById('audio').pause()">
+        <i class='fas fa-volume-mute'></i></button>
+    -->
+    <h1>Question 1</h1>
+    <img id="qnimg">
+
+    <script src="config.js"></script>
     <script src="play.js"></script>
-  </body>
+</body>
 </html>
