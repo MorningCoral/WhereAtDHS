@@ -1,5 +1,5 @@
 
-var db = firebase.firestore();
+
 firebase.auth().onAuthStateChanged(function(user) {
     if(!user) {
         //If User is not logged in or user sign out
@@ -13,6 +13,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 var handleSignedInUser = function(user) {
+
     var userdocRef = db.collection("users").doc(user.uid);
     userdocRef.get().then(function(thisDoc) {
         if (!thisDoc.exists) {
@@ -24,6 +25,21 @@ var handleSignedInUser = function(user) {
             })
         }
     });
+    var adminRef = db.collection("admins").doc(user.uid);
+    adminRef.get().then(function(thisDoc) {
+        if (thisDoc.exists) {
+            // Is admin
+            console.log("User is admin");
+            var adminBtn = document.getElementById("adminBtn");
+            adminBtn.style.display = 'block';
+            adminBtn.addEventListener('click', function() {
+                window.location = 'admin-page.html';
+            });
+        }
+        else {
+            console.log("User is not admin. ID: " + user.uid);
+        }
+    });
     // Display name
     document.getElementById('name').textContent = user.displayName;
     // Display highscore
@@ -33,10 +49,9 @@ var handleSignedInUser = function(user) {
     })
     // redirect to play page
     var playBtn = document.getElementById("playBtn");
-    playBtn.addEventListener("click", redirectPlay);
-    function redirectPlay() {
+    playBtn.addEventListener("click", function() {
         window.location = 'play.html';
-    }
+    });
     // logout function
     document.getElementById('logout').addEventListener('click', function() {
         firebase.auth().signOut();

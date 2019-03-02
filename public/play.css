@@ -3,6 +3,7 @@
 
 body {
   background-image: url(background_qn.jpg);
+  display: block;
 }
 i {
   font-size: 20px;
@@ -26,8 +27,32 @@ h1 {
   padding: 20px 20px;
 }
 
-#qnimg {
+#image {
+    margin-bottom: 10px;
+    height: 200px;
+    width: 300px;
+    background: red;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
+.choice {
+  text-align: center;
+  width: 250px;
+  height: 70px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#choices > div:nth-child(even)  {
+    color: white;
+    background: black;
+}
+
+.

@@ -12,6 +12,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 </head>
 <body>
+    <div id="body">
     <!-- Bgm
 
     <audio loop id="audio">
@@ -25,10 +26,15 @@
     <button id="sound" onclick="document.getElementById('audio').pause()">
         <i class='fas fa-volume-mute'></i></button>
     -->
-    <h1>Question 1</h1>
-    <img id="qnimg">
-
-
+        <h1>Question 2</h1>
+        <div id="image"><img id="qnimg" alt="img-alt.jpg" height="200px"></div>
+        <div id="choices">
+            <div class="choice"><p id="op1"></p></div>
+            <div class="choice"></div>
+            <div class="choice"></div>
+            <div class="choice"></div>
+        </div>
+    </div>
     <script src="config.js"></script>
     <script src="play.js"></script>
 </body>

@@ -1,0 +1,9 @@
+- use bootstrap for mobile responsiveness
+- audio must auto play
+- paths?
+- change number to string
+
+- need to refresh if is a new player for highscore to show
+
+- allow user to change display name?
+- ratings at the end
