@@ -22,3 +22,27 @@ var handleAdmins = function(user) {
     // Display name
     document.getElementById('name').textContent = user.displayName;
 }
+
+var selectedFile;
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            };
+            selectedFile = input;
+            var uploadTask = storageRef.child('/qnimages/' + input.name).put(input.files[0]);
+
+            selectedFile = input.files[0];
+            reader.readAsDataURL(selectedFile);
+        }
+    }
+
+function upload() {
+    // check if all fields are filled
+    console.log(selectedFile.name);
+
+};
+
+// Listen for state changes, errors, and completion of the upload.

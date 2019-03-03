@@ -4,19 +4,61 @@
     <meta charset="utf-8">
     <title>Where@DHS</title>
     <link rel="stylesheet" type="text/css" href="admin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
 </head>
 <body>
-    <div id="body">
+    <div class="container">
         <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
         <h1>Welcome to Admin Page</h1>
         <h2>Admin: <span id="name"></span></h2>
-    </div>
+        <form id="adminForm">
 
-    <div id="adminBtn" class="hide">adminBtn</div>
+            <div class="form-group">
+                <label for="qnInput">Question:</label><br>
+                <input type="text" id="qnInput">
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imageUpload" accept="image/" onchange="readURL(this);">
+                        <label class="custom-file-label" for="imageUpload">Choose file</label>
+                    </div>
+                    <div class="img-preview"><img id="preview"></div>
+                </div>
+                <div class="col-md-1"></div><br>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="choice1Input">Correct Answer: </label>
+                        <input type="text" id="choice1Input" class="rightAns">
+                    </div>
+                    <div class="form-group">
+                        <label for="choice2Input">Wrong Answer: </label>
+                        <input type="text" id="choice2Input" class="wrongAns">
+                    </div>
+                    <div class="form-group">
+                        <label for="choice3Input">Wrong Answer: </label>
+                        <input type="text" id="choice3Input" class="wrongAns">
+                    </div>
+                    <div class="form-group">
+                        <label for="choice4Input">Wrong Answer: </label>
+                        <input type="text" id="choice4Input" class="wrongAns">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" id="addQn" onclick="upload()">Add Question</button>
+        </form>
+    </div>
     <script src="config.js"></script>
     <script src="admin.js"></script>
 </body>

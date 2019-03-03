@@ -1,0 +1,16 @@
+#body {
+    text-align: center;
+}
+
+.form-row input {
+    width: 85%;
+}
+
+#qnInput {
+    width: 85%;
+}
+#preview {
+    width: 250px;
+    height: 200px;
+    margin-top: 10px;
+}
