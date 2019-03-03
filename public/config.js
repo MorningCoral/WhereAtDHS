@@ -7,6 +7,6 @@
    storageBucket: "where-at-dhs.appspot.com",
    messagingSenderId: "292287566533"
  };
- firebase.initializeApp(config);
+firebase.initializeApp(config);
 var db = firebase.firestore();
 var storageRef = firebase.storage().ref();

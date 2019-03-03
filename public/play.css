@@ -27,7 +27,7 @@ h1 {
   padding: 20px 20px;
 }
 
-#timer {
+#timerndisplay, #points {
   text-align: center;
   font-size: 30px;
   font-family: 'Open Sans', sans-serif;
@@ -37,6 +37,18 @@ h1 {
   letter-spacing: -2px;
   line-height: 1;
   margin: 0px;
+}
+#points {
+    display: none;
+}
+#score {
+    position: absolute;
+    right: 20px;
+    top:10px;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #F5F5F5;
+    font-weight: 250;
 }
 
 #image {
@@ -79,4 +91,18 @@ h1 {
 .wrongStyle {
     background: red;
     color: white;
+}
+
+#nextQnBtn {
+    display: none;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px black;
+    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }

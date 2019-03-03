@@ -1,9 +1,9 @@
 const TOTALQNSTORED = 3;
 const NUMQNS = 2;
 const TIMER = 10;
-var arr = [];
+var qnArr = [];
 for (var i = 1; i <= TOTALQNSTORED; i++) {
-    arr.push(i);
+    qnArr.push(i);
 }
 
 function shuffle(arra1,n) {
@@ -22,61 +22,23 @@ function shuffle(arra1,n) {
     }
     return arra1;
 }
-console.log(shuffle(arr).slice(0,2));
+
+
 
 var currqndoc;
-var display = document.querySelector('#timer');
-var choiceclass = document.getElementsByClassName("choice");
+var currQnNum;
 var ansIndex;
-var retrieveQn = function(ID) {
-    db.collection("questions").where("ID", "==", ID)
-        .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                currqndoc = doc;
-                document.getElementById('currQn').innerText = doc.data().question;
-                var optIndexes = [];
-                for (var i = 0; i < 4; i++) {
-                    optIndexes.push(i);
+var score = 0;
+var startTime, endTime;
+var displayDiv = document.querySelector('#timerndisplay');
+var choiceclass = document.getElementsByClassName("choice");
+var qnaDiv = document.getElementById('Q&A');
+var ptsDiv = document.getElementById("points")
+var scoreDiv = document.getElementById("score")
+var nextBtn = document.getElementById("nextQnBtn");
 
-                }
-                optIndexes = shuffle(optIndexes);
-                console.log(optIndexes);
-                for (var i = 0; i < 4; i++) {
-                    r = optIndexes[i];
-                    choiceclass[i].innerHTML = doc.data().options[r];
-                    if (r==0) {
-                        ansIndex = i;
-                    }
-                }
 
-            });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
-    storageRef.child('qnimages/qn1.jpg').getDownloadURL().then(function(url) {
-      // `url` is the download URL for 'images/stars.jpg'
 
-      // This can be downloaded directly:
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        var blob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
-
-      // Or inserted into an <img> element:
-      var img = document.getElementById('qnimg');
-      img.src = url;
-    }).catch(function(error) {
-        console.log(error)
-      // Handle any errors
-    });
-
-}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(!user) {
@@ -88,21 +50,90 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 });
 
-var handleSignedInUser = function(user) {
+function handleSignedInUser(user) {
     // scoring system
-    retrieveQn(1);
+    qnArr = shuffle(qnArr).slice(0,NUMQNS);
+    currQnNum = 1; // start with question 1
+    scoreDiv.innerHTML = 'Score: ' + score.toString();
+    startNewQn();
 
-    startTimer(TIMER, display);
-    console.log("new");
 
+}
+
+function startNewQn() {
+    console.log(currQnNum);
+    if (currQnNum <= NUMQNS) {
+        qnID = qnArr[currQnNum-1];
+        console.log(qnID);
+        retrieveQn(qnID);
+        setTimeout(startTimer,2000,TIMER,displayDiv);
+        console.log("new qn");
+    }
+    else {
+        window.location = 'endgame.html';
+    }
+}
+
+function retrieveQn(ID) {
+    var imagelink ='';
+    db.collection("questions").where("ID", "==", ID)
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                currqndoc = doc;
+                imagelink = doc.data().imageLink;
+                imagelink = 'qnimages/' + imagelink;
+                storageRef.child(imagelink).getDownloadURL().then(function(url) {
+                  // `url` is the download URL for 'images/stars.jpg'
+
+                  // This can be downloaded directly:
+                  var xhr = new XMLHttpRequest();
+                  xhr.responseType = 'blob';
+                  xhr.onload = function(event) {
+                    var blob = xhr.response;
+                  };
+                  xhr.open('GET', url);
+                  xhr.send();
+
+                  // Or inserted into an <img> element:
+                  var img = document.getElementById('qnimg');
+                  img.src = url;
+                })
+
+                setTimeout(retrieveOptions, 2000, doc)
+
+            });
+        })
+        .catch(function(error) {
+            console.log("Error getting documents: ", error);
+        });
+}
+
+function retrieveOptions(doc) {
+    qnaDiv.innerText = doc.data().question;
+    var optIndexArr  = [];
+    for (var i = 0; i < 4; i++) {
+        optIndexArr.push(i);
+
+    }
+    optIndexArr = shuffle(optIndexArr);
+    console.log(optIndexArr);
+    for (var i = 0; i < 4; i++) {
+        r = optIndexArr [i];
+        choiceclass[i].innerHTML = doc.data().options[r];
+        if (r==0) {
+            ansIndex = i;
+        }
+    }
 }
 
 
 var startTime, endTime;
-function startTimer(duration, display) {
+function startTimer(duration, displayDiv) {
     console.log("start");
     startTime = Date.now();
-    var gameon = true;
+    var gameOn = true;
     var timer = duration, seconds;
 
     for (var i = 0; i < choiceclass.length; i++) {
@@ -110,8 +141,11 @@ function startTimer(duration, display) {
             console.log("clicked");
             endTime = Date.now();
             clearInterval(timer);
-            gameon = false;
-            score = 1000 + (startTime-endTime)/2;
+            gameOn = false;
+            points = 1000 + Math.round((startTime-endTime)/10);
+            score += points;
+            ptsDiv.innerHTML = points.toString() + ' Points';
+            scoreDiv.innerHTML = 'Score: ' + score.toString();
             revealAns(this);
         });
     };
@@ -119,30 +153,45 @@ function startTimer(duration, display) {
     setInterval(function () {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
-        if (gameon == true) {
-            display.innerHTML = seconds;
+        if (gameOn == true) {
+            displayDiv.innerHTML = seconds;
         }
-        if (--timer < 0 && gameon == true) {
+        if (--timer < 0 && gameOn == true) {
           clearInterval(timer);
-          display.innerHTML = "Time's Up!";
+          ptsDiv.innerHTML = '0 Points :(';
+          revealAns(null);
         }
     }, 1000);
 };
 
 function revealAns(selected) {
+    ptsDiv.style.display = 'block'
     answer = currqndoc.data().answer;
-    console.log(selected.innerHTML);
-    console.log(answer);
-    console.log(ansIndex);
+    if (selected == null) {
+        displayDiv.innerHTML = "Time's Up!";
+    }
     if (selected.innerHTML == answer) {
-        display.innerHTML = 'Correct!';
+        displayDiv.innerHTML = 'Correct!';
     }
     else {
-        display.innerHTML = 'Wrong!';
+        displayDiv.innerHTML = 'Wrong!';
         selected.classList.add("wrongStyle");
     }
     choiceclass[ansIndex].classList.add("correctStyle");
+    qnaDiv.innerHTML = currqndoc.data().explanation;
+    nextBtn.style.display = 'block';
 }
+
+nextBtn.addEventListener("click", function(){
+    currQnNum += 1;
+    nextBtn.style.display = 'none';
+    for (var i = 0; i < choiceclass.length; i++) {
+        choiceclass[i].classList.remove("wrongStyle");
+        choiceclass[i].classList.remove("correctStyle");
+    }
+    ptsDiv.style.display = 'none';
+    startNewQn();
+});
 
 window.onload = function () {
 

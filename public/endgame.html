@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="endgame.css"/>
+    <script src="endgame.js"></script>
+    <title>End Game</title>
+  </head>
+
+  <body>
+    <h1>Game Over</h1>
+
+    <!-- Display User Info-->
+    <p> You have scored <!--insert score--> </p>
+    <p> Your highest score is <!-- insert highest--> </p>
+    <p> Your current ranking : <!-- insert ranking --> </p>
+
+    <!-- Display Leaderboard -->
+
+
+    <!-- Rate the quiz -->
+    <!-- code taken from: https://codepen.io/anon/pen/pYgZjo -->
+    <header class='header text-center'>
+      <p>Please help us by giving us your feedbacks!</p>
+    </header>
+
+    <section class='rating-widget'>
+
+      <!-- Rating Stars Box -->
+  <div class='rating-stars text-center'>
+    <ul id='stars'>
+      <li class='star' title='Poor' data-value='1'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Fair' data-value='2'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Good' data-value='3'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Excellent' data-value='4'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='WOW!!!' data-value='5'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+    </ul>
+  </div>
+
+  <!-- messae telling users they have successfully indicated the ratings-->
+  <!-- ERROR: not responsive, width needs to change-->
+  <div class='success-box'>
+    <div class='clearfix'></div>
+    <div class='text-message'></div>
+    <div class='clearfix'></div>
+  </div>
+
+</section>
+    <!-- End of Section rating-->
+
+    <!-- Give feedbacks -->
+    <div id="feedback-main">
+      <div id="feedback-div">
+        <form action="contact.php" method="post" class="form" id="feedback-form1" name="form1" enctype="multipart/form-data">
+
+
+          <p class="text">
+            <textarea name="comment" type="comment" class="validate[required,length[6,300]] feedback-input" id="feedback-comment" required placeholder="Help us improve. Thank You!"></textarea>
+          </p>
+
+          <div class="feedback-submit">
+            <input type="submit" value="SEND" id="feedback-button-black" />
+            <div class="feedback-ease"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <button id="popup" class="feedback-button" onclick="toggle_visibility()">Feedback</button>
+    <!--End Feedback Section -->
+
+    <!-- Try again -->
+    <div id="tryagain">
+      <button class="button">
+        <a href="questions.html"> Try Again </div></a>
+      </button>
+    </div>
+
+
+  </body>
+</html>
