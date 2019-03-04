@@ -107,3 +107,7 @@ h1 {
     margin-right: auto;
     margin-top: 10px;
 }
+
+#endgame {
+    display: none;
+}
