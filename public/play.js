@@ -32,9 +32,10 @@ var score = 0;
 var startTime, endTime;
 var displayDiv = document.querySelector('#timerndisplay');
 var choiceclass = document.getElementsByClassName("choice");
+var choicesDiv = document.getElementById("choices");
 var qnaDiv = document.getElementById('Q&A');
-var ptsDiv = document.getElementById("points")
-var scoreDiv = document.getElementById("score")
+var ptsDiv = document.getElementById("points");
+var scoreDiv = document.getElementById("score");
 var nextBtn = document.getElementById("nextQnBtn");
 
 
@@ -66,8 +67,9 @@ function startNewQn() {
         qnID = qnArr[currQnNum-1];
         console.log(qnID);
         retrieveQn(qnID);
-        setTimeout(startTimer,2000,TIMER,displayDiv);
+        setTimeout(startTimer,3000,TIMER,displayDiv);
         console.log("new qn");
+        console.log(score);
     }
     else {
         window.location = 'endgame.html';
@@ -100,8 +102,8 @@ function retrieveQn(ID) {
                   var img = document.getElementById('qnimg');
                   img.src = url;
                 })
-
-                setTimeout(retrieveOptions, 2000, doc)
+                retrieveOptions(doc);
+                setTimeout(displayOptions, 3000,doc);
 
             });
         })
@@ -109,13 +111,14 @@ function retrieveQn(ID) {
             console.log("Error getting documents: ", error);
         });
 }
-
-function retrieveOptions(doc) {
+function displayOptions(doc) {
+    choicesDiv.style.display = 'block';
     qnaDiv.innerText = doc.data().question;
+}
+function retrieveOptions(doc) {
     var optIndexArr  = [];
     for (var i = 0; i < 4; i++) {
         optIndexArr.push(i);
-
     }
     optIndexArr = shuffle(optIndexArr);
     console.log(optIndexArr);
@@ -132,7 +135,6 @@ function retrieveOptions(doc) {
 var startTime, endTime;
 function startTimer(duration, displayDiv) {
     console.log("start");
-    startTime = Date.now();
     var gameOn = true;
     var timer = duration, seconds;
 
@@ -142,36 +144,46 @@ function startTimer(duration, displayDiv) {
             endTime = Date.now();
             clearInterval(timer);
             gameOn = false;
-            points = 1000 + Math.round((startTime-endTime)/10);
-            score += points;
-            ptsDiv.innerHTML = points.toString() + ' Points';
-            scoreDiv.innerHTML = 'Score: ' + score.toString();
-            revealAns(this);
+
+            revealAns(this,startTime,endTime);
         });
     };
 
     setInterval(function () {
         seconds = parseInt(timer % 60, 10);
+
         seconds = seconds < 10 ? "0" + seconds : seconds;
+        if(seconds == 10) {
+            startTime = Date.now();
+        }
+
         if (gameOn == true) {
             displayDiv.innerHTML = seconds;
         }
         if (--timer < 0 && gameOn == true) {
           clearInterval(timer);
-          ptsDiv.innerHTML = '0 Points :(';
-          revealAns(null);
+          revealAns(null, null,null);
         }
     }, 1000);
 };
 
-function revealAns(selected) {
-    ptsDiv.style.display = 'block'
+function revealAns(selected,startTime,endTime) {
+
     answer = currqndoc.data().answer;
     if (selected == null) {
         displayDiv.innerHTML = "Time's Up!";
+        ptsDiv.innerHTML = '0 Points :(';
+
     }
-    if (selected.innerHTML == answer) {
+    else if (selected.innerHTML == answer) {
         displayDiv.innerHTML = 'Correct!';
+        points = 1000 + Math.round((startTime-endTime)/10);
+        score = score + points;
+        console.log(score);
+        ptsDiv.innerHTML = points.toString() + ' Points';
+        ptsDiv.style.display = 'block';
+        scoreDiv.innerHTML = 'Score: ' + score.toString();
+
     }
     else {
         displayDiv.innerHTML = 'Wrong!';
@@ -190,6 +202,7 @@ nextBtn.addEventListener("click", function(){
         choiceclass[i].classList.remove("correctStyle");
     }
     ptsDiv.style.display = 'none';
+    choicesDiv.style.display = 'none';
     startNewQn();
 });
 
