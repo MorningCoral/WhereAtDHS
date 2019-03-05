@@ -16,22 +16,18 @@
 <body>
     <div id="body">
 
-
-    <!-- Bgm
-
-    <audio loop id="audio">
-        <source src="bgm.mp3" type="audio/ogg">
-        <embed src="bgm.mp3" autostart="true" loop="true" hidden="true">
-    </audio>
-
-    ! Bgm and Fx toggle buttons
-    <button id="sound" onclick="document.getElementById('audio').play()">
-        <i class='fas fa-volume-up'></i></button>
-    <button id="sound" onclick="document.getElementById('audio').pause()">
-        <i class='fas fa-volume-mute'></i></button>
-    -->
     <!-- Block for Play Game-->
     <div id="playgame">
+        <audio loop id="audio">
+            <source src="bgm.mp3" type="audio/ogg">
+            <embed src="bgm.mp3" autostart="true" loop="true" hidden="true">
+        </audio>
+
+
+        <button id="sound" onclick="document.getElementById('audio').play()">
+            <i class='fas fa-volume-up'></i></button>
+        <button id="sound" onclick="document.getElementById('audio').pause()">
+            <i class='fas fa-volume-mute'></i></button>
         <h1 id="qnNum"></h1>
         <div id="timerndisplay"></div>
         <div id="points"></div>

@@ -47,6 +47,12 @@ var handleSignedInUser = function(user) {
     userdocRef.get().then(function(doc) {
         myhighscore.innerText = doc.data().highscore;
     })
+    var body = document.getElementById("body");
+    setTimeout(function () {
+        body.style.display = 'block';
+    }, 2000);
+
+
     // redirect to play page
     var playBtn = document.getElementById("playBtn");
     playBtn.addEventListener("click", function() {

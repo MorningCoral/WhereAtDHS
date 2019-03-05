@@ -6,6 +6,7 @@
   align-content: center;
   position: relative;
   padding: 150px 100px;
+  display: none;
 }
 h1 {
   color: #0F1626;
@@ -38,6 +39,7 @@ p {
 }
 #body2 {
   align-self: center;
+  text-align: center;
 }
 a {
   text-decoration: none;
@@ -49,11 +51,15 @@ a {
   font: Georgia;
   font-size: 1.2em;
   background-color: #AB987A;
+  color: white;
   border: none;
   border-radius: 200px;
   cursor: pointer;
   background-color: #984B43;
   margin: 40px;
+  height: 30px;
+  width: 200px;
+  display: inline-block;
 }
 #playBtn:hover {
   opacity: 0.7;
@@ -63,10 +69,14 @@ a {
   font: Georgia;
   font-size: 1.2em;
   background-color: #AB987A;
+  color: white;
   border-radius: 200px;
   cursor: pointer;
   background-color: #AB987A;
   margin: 40px;
+  height: 30px;
+  width: 200px;
+  display: inline-block;
 }
 #logout:hover {
   opacity: 0.7;
@@ -74,4 +84,68 @@ a {
 
 #adminBtn {
     display: none;
+}
+.circle {
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
+.circle:hover {
+  background: #fbfbfb;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #AB987A;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  transition: all 200ms;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #AB987A;
+}
+.popup .close:hover {
+  color: black;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+
+  .popup{
+    width: 60%;
+  }
 }

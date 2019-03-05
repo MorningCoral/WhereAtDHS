@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Where@DHS</title>
     <link rel="stylesheet" type="text/css" href="home.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
@@ -12,12 +13,33 @@
 <body>
     <div id="body">
         <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
+        <div id="howtoplay">
+            <i class="material-icons">help_outline</i>
+        </div>
         <h1>Welcome <span id="name"></span></h1>
         <h2>Your highscore is <span id="myhighscore"></span></h2>
         <div id="body2">
             <div id="playBtn">Play</div>
+        </br>
             <div id="logout">Logout</div>
             <button id="adminBtn">Admin</button>
+        </div>
+        <!-- How to play button -->
+
+        <!--  How to play modal -->
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    Rules:</br>
+                    There will be total of 10 questions.</br>
+                    Choose the correct answer before time runs out!</br>
+                    Each correct answer will give you one point!</br>
+                    While wrong answer or no answer you will not get any point!</br>
+                    </br>
+                    Now, let's see how many points you can get! :)
+                </div>
+            </div>
         </div>
 
     </div>
