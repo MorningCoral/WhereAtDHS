@@ -2,11 +2,28 @@
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 
 body {
-  background-image: url(background_qn.jpg);
+  background: url(dhs-bgm2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   display: block;
+
 }
-i {
-  font-size: 20px;
+#icons {
+    display: none;
+}
+#playgame {
+    text-align: center;
+    padding: 0 2vw;
+    display: none;
+}
+#endgame {
+    display: none;
+}
+#icons {
+    position: fixed;
+    font-size: 20px;
 }
 #sound {
   background-color: white;
@@ -15,74 +32,83 @@ i {
   margin: 5px;
   padding: 5px 13px;
 }
-h1 {
-  color: #F5F5F5;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 250;
-  font-size: 2.5em;
-  letter-spacing: -1px;
-
-  margin:0px;
+#questions {
   text-align: center;
-  padding: 10px 10px;
+}
+#qnNum {
+  font-size: 3.5vmax;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin: 0;
 }
 
 #timerndisplay, #points {
-  text-align: center;
-  font-size: 30px;
-  font-family: 'Open Sans', sans-serif;
-  color: #F5F5F5;
-  text-decoration: none;
-  font-weight: 250;
-  letter-spacing: -2px;
-  line-height: 1;
-  margin: 0px;
+  color: #0F1626;
+  font-size: 5vmin;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin: 0;
 }
 
 #score {
-    position: absolute;
-    right: 20px;
-    top:10px;
-    font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
-    color: #F5F5F5;
-    font-weight: 250;
+    position: fixed;
+    right: 3vw;
+    top: 3vh;
+    font-size: 4.5vmin;
+    font-family: 'Montserrat Alternates';
+    color: black;
+    font-weight: 500;
+}
+img {
+    width: 30vw;
+    height: 23vw;
+    padding-top: 2vh;
 }
 
-#image {
-    margin-bottom: 10px;
-    height: 200px;
-    width: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#QnA {
+    font-family: 'Montserrat Alternates';
+    font-size: 2vw;
+    margin: 0;
 }
-
+#choices {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
 .choice {
   text-align: center;
-  width: 250px;
-  height: 50px;
-  font-size: 20px;
+  width: 80vh;
+  height: 6vmin;
+  font-size: 3.2vmin;
+  font-family: 'Montserrat Alternates';
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid #0F1626;
   background-color: white;
   display: block;
+  border-radius: 200px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 0.6vmax;
+  margin-bottom: 0.6vmax;
+  padding-top: 3px;
+}
+.choice p {
+  text-align: center;
+  margin: auto;
 }
 
 /* #choices > div:nth-child(even)  {
     color: white;
     background: black;
 } */
-#choices {
+/* #choices {
     display: none;
-}
+} */
 .Qn-div {
-    color: white;
     text-align: center;
 }
-
 .correctStyle {
     background: green;
     color: white;
@@ -91,22 +117,20 @@ h1 {
     background: red;
     color: white;
 }
-
 #nextQnBtn {
-    display: none;
+    display: block;
+    font-family: 'Cabin Sketch';
     text-align: center;
-    width: 250px;
-    height: 50px;
-    font-size: 20px;
+    width: 18vmax;
+    height: 7vmin;
+    border-radius: 200px;
+    font-size: 2vmax;
     cursor: pointer;
     border: 2px black;
     background-color: black;
     color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-}
-
-#endgame {
-    display: none;
+    margin-top: 1vmax;
+    padding-top: 1vmin;
 }

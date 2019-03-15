@@ -25,23 +25,23 @@ var handleSignedInUser = function(user) {
             })
         }
     });
-    var adminRef = db.collection("admins").doc(user.uid);
-    adminRef.get().then(function(thisDoc) {
-        if (thisDoc.exists) {
-            // Is admin
-            console.log("User is admin");
-            var adminBtn = document.getElementById("adminBtn");
-            adminBtn.style.display = 'block';
-            adminBtn.addEventListener('click', function() {
-                window.location = 'admin-page.html';
-            });
-        }
-        else {
-            console.log("User is not admin. ID: " + user.uid);
-        }
-    });
+    // var adminRef = db.collection("admins").doc(user.uid);
+    // adminRef.get().then(function(thisDoc) {
+    //     if (thisDoc.exists) {
+    //         // Is admin
+    //         console.log("User is admin");
+    //         var adminBtn = document.getElementById("adminBtn");
+    //         adminBtn.style.display = 'block';
+    //         adminBtn.addEventListener('click', function() {
+    //             window.location = 'admin-page.html';
+    //         });
+    //     }
+    //     else {
+    //         console.log("User is not admin. ID: " + user.uid);
+    //     }
+    // });
     // Display name
-    document.getElementById('name').textContent = user.displayName;
+    document.getElementById('name').innerText = user.displayName;
     // Display highscore
     var myhighscore = document.getElementById("myhighscore");
     userdocRef.get().then(function(doc) {

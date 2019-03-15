@@ -2,30 +2,31 @@
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 
 body {
-  background-image: url(background_qn.jpg);
+  background: url(dhs-bgm2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: block;
 }
-
-h1 {
-  color: #F5F5F5;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 250;
-  font-size: 2.5em;
-  letter-spacing: -1px;
-  line-height: 1.0em;
-  margin: auto;
+#endgame {
   text-align: center;
-  padding: 50px 20px;
+}
+h1 {
+  color: #0F1626;
+  font-size: 4vw;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin: 1vw;
 }
 p {
-  color: #F5F5F5;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 1.5em;
-  letter-spacing: -1px;
-  line-height: 1.0em;
-  margin:0px;
-  text-align: center;
-  padding: 10px 10px;
+  color: #0F1626;
+  font-size: 3vw;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin: 1vw;
 }
 
 /* /// RATING SECTION /// */
@@ -49,9 +50,9 @@ box-sizing: border-box;
 }
 
 .header {
-  padding:20px 0;
+  width: 100%;
   position:relative;
-  margin-bottom:10px;
+  margin-bottom: 0.5vw;
 }
 
 .header:after {
@@ -63,29 +64,36 @@ box-sizing: border-box;
   left:30%; right:30%;
 }
 .header p {
-  color: #F5F5F5;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  font-size: 1.5em;
-  letter-spacing: -1px;
-  line-height: 1.0em;
-  margin:0px;
-  text-align: center;
-  padding: 10px 10px;
+  color: #AB987A;
+  background-color: white;
+  width: 45vw;
+  height: 3vw;
+  border-radius: 200px;
+  font-size: 2vw;
+  font-family: 'Cabin Sketch';
+  font-weight: 600;
+  display: inline-block;
+  margin: 1vw;
+  padding-top: 3px;
 }
-
+#success {
+  text-align: center;
+}
 .success-box {
-  margin:20px 0;
-  padding:10px 10px;
-  position: relative;
+  width: 35vw;
+  height: 2.5vw;
+  border-radius: 200px;
   border:1px solid #eee;
   background: transparent;
+  display: inline-block;
 }
 
 .success-box > div {
   vertical-align:top;
   display:inline-block;
-  color: grey;
+  color: #0F1626;
+  font-family: 'Cabin Sketch';
+  font-size: 2vw;
 }
 
 /* Rating Star Widgets Style */
@@ -98,18 +106,20 @@ box-sizing: border-box;
 }
 .rating-stars ul > li.star {
   display:inline-block;
-
 }
 
 /* Idle State of the stars */
 .rating-stars ul > li.star > i.fa {
-  font-size:2.5em; /* Change the size of the stars */
+  font-size: 1.5em; /* Change the size of the stars */
   color: black; /* Color on idle state */
 }
 
 /* Hover state of the stars */
+li:hover {
+  cursor: pointer;
+}
 .rating-stars ul > li.star.hover > i.fa {
-  color: grey;
+  color: yellow;
 }
 
 /* Selected state of the stars */
@@ -122,24 +132,23 @@ box-sizing: border-box;
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 .feedback-button {
-  height: 40px;
+  height: 4vw;
   border: solid 2px #CCCCCC;
   background: #AB987A;
-  width: 100px;
-  line-height: 30px;
+  width: 12vw;;
   -webkit-transform: rotate(-90deg);
-  font-weight: 600;
   color: white;
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   text-align: center;
-  font-size: 15px;
+  font-size: 2vw;
   position: fixed;
-  right: -40px;
-  top: 45%;
-  font-family: "Roboto", helvetica, arial, sans-serif;
+  right: 0%;
+  top: 20%;
+  font-family: "Cabin Sketch";
   z-index: 999;
+  margin: none;
 }
 
 #feedback-main {
@@ -231,12 +240,11 @@ input:focus,
 #feedback-button-black:hover {
   background-color: #F5F5F5;
   color: black;
+  cursor: pointer;
 }
-
 .feedback-button-black:hover {
   color: #3498db;
 }
-
 .feedback-ease {
   width: 0px;
   height: auto;
@@ -255,7 +263,6 @@ input:focus,
 
 @media only screen and (max-width: 580px) {
   #feedback-div {
-    left: 3%;
     margin: 3%;
     width: 88%;
     margin-left: 0;
@@ -264,14 +271,41 @@ input:focus,
   }
 }
 
-/* /// Try Again Section /// */
-.button {
-  background-color: #6D7993;
-  padding: 10px 25px;
+/* /// Button Section /// */
+#buttons {
+  margin-top: 5vh;
+  text-align: center;
+}
+.btn {
+  font-size: 2vw;
+  padding: 1vw 2vw;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.7vw;
+  font-weight: 500;
+  color: white;
+  margin-top: 1vh;
   border: none;
   border-radius: 200px;
   cursor: pointer;
-  margin: 20px;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  box-shadow: 0px 3px 15px grey;
+  margin-bottom: 1vw;
+  display: inline-block;
+  width: 15vmax;
+  text-align: center;
+}
+#tryagain {
+    background-color: RoyalBlue;
+}
+#tryagain:hover {
+    background-color: MidnightBlue;
+}
+#gohome {
+    background-color: OrangeRed;
+}
+#gohome:hover {
+    background-color: FireBrick;
 }
 a {
   text-decoration: none;
@@ -281,10 +315,4 @@ a {
   font-weight: 200;
   font-size: 1.5em;
   line-height: 1.0em;
-}
-#tryagain {
-  text-align: center;
-}
-#home {
-  text-align: center;
 }

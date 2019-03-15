@@ -1,101 +1,106 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 
-#body {
-  background-color: #F5F5F5;
-  align-content: center;
+body {
+  text-align: center;
   position: relative;
-  padding: 150px 100px;
-  display: none;
+  height: 100%;
+  width: 100%;
+  padding-top: 5vh;
+  background: url(dhs-bgm3.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: block;
 }
 h1 {
   color: #0F1626;
-  font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
-  font-weight: normal;
-  font-size: 1.8em;
-  letter-spacing: .1em;
-  line-height: 1.1em;
-  margin:0px;
-  text-align: center;
+  font-size: 10vh;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin: 2vh;
 }
 h2 {
   color: #0F1626;
-  font-size: 25px;
-  font-family: Times New Roman;
-  position: relative;
-  text-align: center;
-}
-p {
-  text-align: center;
-  padding: 20px;
-  font-size: 30px;
-  font-family: 'Open Sans', sans-serif;
-  color: #0F1626;
-  text-decoration: none;
-  font-weight: 250;
-  letter-spacing: -3px;
-  line-height: 1;
-  margin: 40px;
+  font-size: 6vh;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
+  margin-top: 5vh;
 }
 #body2 {
-  align-self: center;
+  margin-top: 10vh;
   text-align: center;
 }
-a {
-  text-decoration: none;
+.btn {
+  font-size: 2vw;
+  padding: 1vw 2.5vw;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.7vw;
+  font-weight: 500;
   color: white;
-  text-align: center;
-}
-#playBtn {
-  text-align: center;
-  font: Georgia;
-  font-size: 1.2em;
-  background-color: #AB987A;
-  color: white;
+  margin-top: 1vh;
   border: none;
   border-radius: 200px;
   cursor: pointer;
-  background-color: #984B43;
-  margin: 40px;
-  height: 30px;
-  width: 200px;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  box-shadow: 0px 3px 15px grey;
+  margin-bottom: 1vw;
   display: inline-block;
-}
-#playBtn:hover {
-  opacity: 0.7;
-}
-#logout, #adminBtn {
-  text-align: center;
-  font: Georgia;
-  font-size: 1.2em;
-  background-color: #AB987A;
-  color: white;
-  border-radius: 200px;
-  cursor: pointer;
-  background-color: #AB987A;
-  margin: 40px;
-  height: 30px;
-  width: 200px;
-  display: inline-block;
-}
-#logout:hover {
-  opacity: 0.7;
 }
 
-#adminBtn {
-    display: none;
+#playBtn {
+    background-color: orange;
 }
-.circle {
-  height: 50px;
-  width: 50px;
-  font-size: 20px;
-  background-color: white;
-  border-radius: 50%;
+#playBtn:hover {
+  opacity: 0.9;
+  background-color: peru;
+}
+#logout {
+    background-color: #f44336; /* Red */
+}
+#logout:hover {
+    opacity: 0.9;
+    background-color: FireBrick;
+}
+
+a {
   display: inline-block;
+  height: 5vw;
+  width: 5vw;
+  text-decoration: none;
 }
-.circle:hover {
-  background: #fbfbfb;
+#howtoplay {
+    background: black;
+    color: white;
+    border-radius: 100%;
+    width: 3.5vw;
+    height: 3.5vw;
+    position: fixed;
+    padding: 0;
+    left: 2vw;
+    top: 3vh;
+    line-height: 2.3;
+    font-size: 3.5vh;
+    cursor: pointer;
 }
+a {
+  color: white;
+  text-decoration: none;
+  position: fixed;
+  left: 1.3vw;
+  top: 3vh;
+}
+#howtoplay:hover {
+    background: grey;
+    a {
+        color: black;
+    }
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -103,7 +108,7 @@ a {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
+  transition: opacity 100ms;
   visibility: hidden;
   opacity: 0;
 }
@@ -118,7 +123,7 @@ a {
   border-radius: 5px;
   width: 30%;
   position: relative;
-  transition: all 5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .popup h2 {
   margin-top: 0;
@@ -143,9 +148,9 @@ a {
   overflow: auto;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 120%){
 
   .popup{
-    width: 60%;
+    width: 50%;
   }
 }

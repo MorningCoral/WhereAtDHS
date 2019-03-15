@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Where@DHS</title>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    </head>
-    <body>
-        <div id="body">
-            <h1>Where @ DHS!</h1>
-            <h2>Are You Ready for the Quiz?</h2>
+<head>
+    <meta charset="utf-8">
+    <title>Where@DHS</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin Sketch' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
-            <!-- How to play button -->
-            <div class="box">
-                <a class="button" href="#popup1">How to Play</a>
-            </div>
-            <!-- Google Login button -->
-            <div id="sign-in">
-                <div id="firebaseui-auth-container"></div>
-            </div>
-            <!--  How to play modal -->
-            <div id="popup1" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        Rules:</br>
-                        There will be total of 10 questions.</br>
-                        Choose the correct answer before time runs out!</br>
-                        Each correct answer will give you one point!</br>
-                        While wrong answer or no answer you will not get any point!</br>
-                        </br>
-                        Now, let's see how many points you can get! :)
-                    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+</head>
+<body>
+    <div id="body">
+        <h1>Where @ DHS!</h1>
+        <h2>Are You Ready for the Quiz?</h2>
+
+        <!-- How to play button -->
+        <div class="box">
+            <a class="button" href="#popup1"><div class="fas fa-question"></div> &nbsp How to Play</a>
+        </div>
+        <br>
+        <!-- Google Login button -->
+        <div id="loginBtn">
+            <div class="fab fa-google"></div>
+            &nbsp Login with google
+
+        </div>
+
+        <!--  How to play modal -->
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <strong>RULES:</strong></br>
+                    There will be total of 10 questions.</br>
+                    Choose the correct answer before time runs out!</br>
+                    Each correct answer will give you one point!</br>
+                    While wrong answer or no answer you will not get any point!</br>
+                    </br>
+                    Now, let's see how many points you can get! :)
                 </div>
             </div>
         </div>
-    <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
-    <script src="config.js"></script>
-    <script src="login.js"></script>
-    </body>
+    </div>
+<!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
+<script src="config.js"></script>
+<script src="login.js"></script>
+</body>
 </html>

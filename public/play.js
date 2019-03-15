@@ -29,17 +29,18 @@ var currqndoc;
 var currQnNum;
 var ansIndex;
 var score = 0;
+var points = 0;
 var startTime, endTime;
 var qnNumDiv = document.getElementById("qnNum");
 var displayDiv = document.querySelector('#timerndisplay');
 var choiceclass = document.getElementsByClassName("choice");
 var choicesDiv = document.getElementById("choices");
-var qnaDiv = document.getElementById('Q&A');
-var ptsDiv = document.getElementById("points");
+var qnaDiv = document.getElementById('QnA');
 var scoreDiv = document.getElementById("score");
 var nextBtn = document.getElementById("nextQnBtn");
 var img = document.getElementById('qnimg');
 var imageDiv = document.getElementById("image");
+var icons = document.getElementById("icons");
 var plagameBlock = document.getElementById("playgame");
 var endgameBlock = document.getElementById("endgame");
 var gameEnd = false;
@@ -57,6 +58,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function handleSignedInUser(user) {
     // scoring system
+    plagameBlock.style.display = 'none';
+    icons.style.display = 'none';
     qnArr = shuffle(qnArr).slice(0,NUMQNS);
     console.log(qnArr);
     currQnNum = 1; // start with question 1
@@ -117,12 +120,15 @@ function retrieveQn(ID) {
 }
 function displayOptions(doc) {
     retrieveOptions(doc);
-    choicesDiv.style.display = 'block';
+    plagameBlock.style.display = 'block';
+    icons.style.display = 'block';
+    choicesDiv.style.display = 'flex';
     qnaDiv.innerText = doc.data().question;
     qnaDiv.style.display = 'block';
-    qnNumDiv.innerText = "Question " + currQnNum.toString();
+    qnNumDiv.innerText = "Question " + currQnNum.toString() + "/" + NUMQNS.toString();
     qnNumDiv.style.display = 'block';
     image.style.display = 'block';
+
 }
 function retrieveOptions(doc) {
     var optIndexArr  = [];
@@ -178,6 +184,7 @@ function startTimer(duration, displayDiv) {
         }
         if (--timer < 0 && gameOn == true) {
             clearInterval(timer);
+            gameOn = False;
             revealAns(null, null,null);
         }
     }, 1000);
@@ -188,24 +195,19 @@ function revealAns(selected,startTime,endTime) {
 
     answer = currqndoc.data().answer;
     if (selected == null) {
-        displayDiv.innerText = "Time's Up!";
-        ptsDiv.innerText = '0 Points :(';
+        displayDiv.innerText = "Time's Up! 0 Points :(";
 
     }
     else if (selected.innerText == answer) {
-        displayDiv.innerText = 'Correct!';
         points = 100 + Math.round((startTime-endTime)/(10*15));
+        displayDiv.innerText = 'Correct! ' + points.toString() + ' Points';
         score = score + points;
         console.log("end score:" + score.toString());
-        ptsDiv.innerText = points.toString() + ' Points';
-        ptsDiv.style.display = 'block';
         scoreDiv.innerText = 'Score: ' + score.toString();
 
     }
     else {
-        displayDiv.innerText = 'Wrong!';
-        ptsDiv.innerText = '0 Points :(';
-        ptsDiv.style.display = 'block';
+        displayDiv.innerText = 'Wrong! 0 Points :(';
         selected.classList.add("wrongStyle");
     }
     choiceclass[ansIndex].classList.add("correctStyle");
@@ -221,6 +223,7 @@ nextBtn.addEventListener("click", function(){
     currQnNum += 1;
     if (currQnNum > NUMQNS) {
         plagameBlock.style.display = 'none';
+        icons.style.display = 'none';
         endgamefunctions();
     }
     nextBtn.style.display = 'none';
@@ -228,12 +231,13 @@ nextBtn.addEventListener("click", function(){
         choiceclass[i].classList.remove("wrongStyle");
         choiceclass[i].classList.remove("correctStyle");
     }
-    ptsDiv.style.display = 'none';
+    icons.style.display = 'none';
     choicesDiv.style.display = 'none';
     qnaDiv.style.display = 'none';
     qnNumDiv.style.display = 'none';
     imageDiv.style.display = 'none';
     displayDiv.style.display = 'none';
+
     startNewQn();
 });
 
@@ -270,7 +274,6 @@ function endgamefunctions() {
     gohomeBtn.addEventListener("click", function(){
         window.location = 'home.html';
     })
-
 
     function retrieveHighscore(doc) {
         newhighscore.innerText = doc.data().highscore;

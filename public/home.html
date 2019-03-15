@@ -5,6 +5,9 @@
     <title>Where@DHS</title>
     <link rel="stylesheet" type="text/css" href="home.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link href='https://fonts.googleapis.com/css?family=Cabin Sketch' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ewert' rel='stylesheet'>
 
     <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
@@ -14,15 +17,16 @@
     <div id="body">
         <!--<button type="button" onclick="googleSignIn()">Google Sign In</button>-->
         <div id="howtoplay">
-            <i class="material-icons">help_outline</i>
+            <a href="#popup1"><div class="fas fa-question"></div></a>
         </div>
         <h1>Welcome <span id="name"></span></h1>
         <h2>Your highscore is <span id="myhighscore"></span></h2>
+        <br>
         <div id="body2">
-            <div id="playBtn">Play</div>
-        </br>
-            <div id="logout">Logout</div>
-            <button id="adminBtn">Admin</button>
+            <br>
+            <div class="btn" id="playBtn">Play &nbsp<div class="fas fa-play"></div></div>
+            <br>
+            <div class="btn" id="logout">Logout &nbsp<div class="fas fa-sign-out-alt"></div></div>
         </div>
         <!-- How to play button -->
 

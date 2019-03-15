@@ -1,42 +1,30 @@
-#body {
-  background-color: #F5F5F5;
-  align-content: center;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+body {
+  text-align: center;
   position: relative;
-  padding: 150px 100px;
+  height: 100%;
+  width: 100%;
+  background: url(dhs-bgm3.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 h1 {
   color: #0F1626;
-  font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
-  font-weight: normal;
-  font-size: 2.5em;
-  letter-spacing: .1em;
-  line-height: 1.1em;
-  margin:0px;
-  text-align: center;
-  text-transform: uppercase;
+  font-family: 'Ewert';
+  font-size: 6vw;
+  width: 100%;
+  display: inline-block;
 }
 h2 {
   color: #0F1626;
-  font-size: 25px;
-  font-family: Times New Roman;
-  position: relative;
-  text-align: center;
-}
-.button2 {
-  color: white;
-  font: Georgia;
-  text-align: center;
-  background-color: #AB987A;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 200px;
-  cursor: pointer;
-  background-color: #984B43;
-  font-size: 1.2em;
-}
-#startbutton {
-  text-align: center;
-  padding: 35px 20px;
+  font-size: 4vw;
+  font-family: 'Cabin Sketch';
+  width: 100%;
+  display: inline-block;
 }
 .box {
   margin: 0 auto;
@@ -46,14 +34,15 @@ h2 {
   text-align: center;
 }
 .button {
-  font-size: 1em;
-  padding: 10px 25px;
-  background-color: #AB987A;
-  font: Georgia;
+  font-size: 1.7vw;
+  padding: 1vw 2.5vw;
+  background-color: CadetBlue;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   border: none;
   border-radius: 200px;
   cursor: pointer;
+  box-shadow: 0px 8px 15px grey;
   transition: all 0.3s ease-out;
   text-decoration: none;
 }
@@ -62,7 +51,7 @@ a {
   text-decoration: none;
 }
 .button:hover {
-  background: #984B43;
+  background: teal ;
 }
 .overlay {
   position: fixed;
@@ -84,14 +73,13 @@ a {
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 30%;
+  width: 50vw;
   position: relative;
-  transition: all 5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 .popup h2 {
   margin-top: 0;
   color: #AB987A;
-  font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {
   position: absolute;
@@ -109,13 +97,33 @@ a {
 .popup .content {
   max-height: 30%;
   overflow: auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5vw;
 }
-
-@media screen and (max-width: 700px){
+#loginBtn {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.7vw;
+    padding: 1vw 2.5vw;
+    width: 17vw;
+    background-color: #f44336; /* Red */
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 200px;
+    cursor: pointer;
+    box-shadow: 0px 8px 15px grey;
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+}
+#loginBtn:hover {
+    background: FireBrick;
+}
+@media screen and (max-width: 120%){
   .box{
     width: 70%;
   }
   .popup{
-    width: 60%;
+    width: 50%;
   }
 }
